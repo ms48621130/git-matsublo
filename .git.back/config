@@ -1,0 +1,8 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/ms48621130/git-matsublo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

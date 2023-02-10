@@ -28,7 +28,7 @@
 
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：mac Big Sur 11.0.1
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery

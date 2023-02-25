@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  root to:"bublic/homes#top"
+  root to:"public/homes#top"
 
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :reviews,only: [:index, :new, :create]
     resources :comments,only: [:new, :create]
   end
+
+
 
   get 'admin' => 'admin/homes#top', as: 'admin'
 
@@ -25,10 +27,13 @@ Rails.application.routes.draw do
   sessions: 'admin/sessions'
 }
   devise_for :users,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
+  registrations: 'public/registrations',
   sessions: 'public/sessions'
 }
 
+  devise_scope :user do
+   post 'users/guest_sign_in' => 'public/sessions#new_guest'
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

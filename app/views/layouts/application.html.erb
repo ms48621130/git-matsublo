@@ -20,10 +20,60 @@
             ようこそ、<%= current_user.name %>さん！
           </div>
           <% else %>
-            <span>LOGO</span>  
+            <span>LOGO</span>
+          <% end %>
+          byebug
+          <% if admin_signed_in? %>
+          <li>
+            <%= link_to admin_users_path, class: 'nav-link text-light' do %>
+            <span>会員一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_posts_path, class: 'nav-link text-light' do %>
+            <span>投稿一覧</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <span>ログアウト</span>
+            <% end %>
+          </li>
+          <% elsif user_signed_in? %>
+          <li>
+            <%= link_to users_my_page_path, class: 'nav-link text-light' do %>
+            <span>マイページ</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
+            <span>ログアウト</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-light' do %>
+            <span>サイト紹介</span>
+            <% end %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+            <span>ログイン</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+            <span>新規登録</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path, class: 'nav-link text-light' do %>
+            <span>サイト紹介</span>
+            <% end %>
+          </li>
+          <% end %>
         </div>
       </nav>
-      
     </header>
     <%= yield %>
   </body>

@@ -10,7 +10,21 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class = "d-flex flex-column vh-100">
+    <header class = "shadow-sm">
+      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container">
+          <% if user_signed_in? %>
+          <div class = "navbar-brand text-center">
+            <span>LOGO</span>
+            ようこそ、<%= current_user.name %>さん！
+          </div>
+          <% else %>
+            <span>LOGO</span>  
+        </div>
+      </nav>
+      
+    </header>
     <%= yield %>
   </body>
 </html>

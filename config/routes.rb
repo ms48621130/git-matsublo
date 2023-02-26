@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
     get 'users/my_page' => 'users#show'
+    post 'guest/login' => 'guest_sessions#create'
     resources :posts,only: [:show]
     resources :users,only: [:edit, :update]
     resources :reviews,only: [:index, :new, :create]
     resources :comments,only: [:new, :create]
   end
 
-  post 'guest/login' => 'quest/sessions#create'
+
 
   get 'admin' => 'admin/homes#top', as: 'admin'
 

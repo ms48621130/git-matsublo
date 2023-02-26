@@ -1,9 +1,9 @@
 class Public::GuestSessionsController < ApplicationController
   def create
-    @user = User.find_or_create_by!(email: "quest@example.com") do |user|
+    @user = User.find_or_create_by!(email: "guest@example.com", name: "ゲストユーザー") do |user|
     user.password = SecureRandom.urlsafe_base64
-    user.name = "ゲストユーザー"
     end
-    
+    redirect_to root_path
+    flash[:notice] = "ログインユーザーとしてログインしました"
   end
 end

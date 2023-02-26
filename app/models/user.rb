@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :name, :email, :encrypted_password, presence: true
+  validates :name, :email, :encrypted_password, :image, presence: true
 end

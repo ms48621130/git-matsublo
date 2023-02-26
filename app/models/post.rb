@@ -5,5 +5,5 @@ class Post < ApplicationRecord
   has_many :places, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :matsuri_name, :season, :spot, :article, presence: true
+  validates :matsuri_name, :season, :spot, :article, :image, presence: true
 end

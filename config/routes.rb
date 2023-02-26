@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :comments,only: [:new, :create]
   end
 
-
+  post 'guest/login' => 'quest/sessions#create'
 
   get 'admin' => 'admin/homes#top', as: 'admin'
 
@@ -31,9 +31,6 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-  devise_scope :user do
-   post 'users/guest_sign_in' => 'public/sessions#new_guest'
-  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

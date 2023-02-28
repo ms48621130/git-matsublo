@@ -4,13 +4,13 @@
       <h4 style = "background-color: #d3d3d3;">マイページ</h4>
     </div>
   </div>
-
+  <%= image_tag @user.image, style: "width: 200px; height: 200px;"%>
   <div class = "col-xl-4">
     <table class="table">
       <tr>
         <th>登録情報</th>
         <td>
-          <%=link_to users_information_edit_path, class: "btn btn-success ml-5" do %>
+          <%=link_to edit_user_path(@user), class: "btn btn-success ml-5" do %>
             編集する
           <% end %>
         </td>

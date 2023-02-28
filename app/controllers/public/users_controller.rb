@@ -8,13 +8,15 @@ class Public::UsersController < ApplicationController
   end
   
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to users_my_page_path
+      sign_in(@user)
+      redirect_to user_path(@user)
     else
       render :edit
     end
   end
+  
   private
   def user_params
     params.require(:user).permit(:name, :email, :password)

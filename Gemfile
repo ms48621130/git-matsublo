@@ -62,3 +62,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'pry-byebug', group: :development
 
 gem 'pry-rails'
+
+gem 'enum_help'

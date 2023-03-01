@@ -38,6 +38,6 @@ class Admin::SessionsController < Devise::SessionsController
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :encrypted_password])
   end
 end

@@ -29,7 +29,10 @@
           <div style = "width: 20%;">
             <label>開催地域</label>
           </div>
-          <%= f.select :prefecture_id, Prefecture.areas.keys, {} %>
+          <%= f.fields_for :prefectures, @prefecture do |prefecture| %>
+            <%= prefecture.select :area, Prefecture.areas.keys, {} %>
+            
+          <% end %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 20%;">

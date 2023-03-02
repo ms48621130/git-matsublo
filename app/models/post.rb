@@ -6,5 +6,14 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :prefectures, dependent: :destroy
 
-  validates :matsuri_name, :season, :area, :article, :image, :prefecture_area, presence: true
+
+  with_options presence: true do
+    validates :matsuri_name
+    validates :season
+    validates :article
+    validates :image
+    validates :prefectures
+  end
+
+  accepts_nested_attributes_for :prefectures, allow_destroy: true
 end

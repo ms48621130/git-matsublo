@@ -1,6 +1,7 @@
 class Admin::PostsController < ApplicationController
   def new
     @post = Post.new
+    @prefecture = @post.prefectures.build
   end
 
   def index
@@ -9,6 +10,7 @@ class Admin::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    
     if @post.save
      redirect_to admin_post_path(@post.id)
     else
@@ -24,7 +26,8 @@ class Admin::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:image, :matsuri_name, :article, :prefecture_id, :season)
+    params.require(:post).permit(:image, :matsuri_name, :article, :season,
+    prefectures_attributes: [:area])
   end
 
 end

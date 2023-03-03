@@ -12,7 +12,7 @@ class Post < ApplicationRecord
     validates :season
     validates :article
     validates :image
-    validates :prefectures
+    
   end
 
   accepts_nested_attributes_for :prefectures, allow_destroy: true

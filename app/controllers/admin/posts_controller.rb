@@ -33,7 +33,7 @@ class Admin::PostsController < ApplicationController
       render :edit
     end
   end
-
+  
   private
   def post_params
     params.require(:post).permit(:image, :matsuri_name, :article, :season, :area)

@@ -9,12 +9,10 @@ Rails.application.routes.draw do
   devise_for :users,skip: [:passwords], controllers: {
   registrations: 'public/registrations',
   sessions: 'public/sessions'
-
-
-
 }
 
   scope module: :public do
+    get "search" => "homes#search"
     get 'about' => 'homes#about', as: 'about'
     resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#create'
@@ -22,8 +20,6 @@ Rails.application.routes.draw do
     resources :reviews,only: [:index, :new, :create]
     resources :comments,only: [:new, :create]
   end
-
-
 
   get 'admin' => 'admin/homes#top', as: 'admin'
 

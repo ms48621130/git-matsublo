@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class = "col-xl-3 offset-xl-1 mt-4">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <h5>開催月</h5>
+      <div class="search-form">
+        <%= f.select :season, [*(1..12)], { include_blank: true } %>月
+      </div>
+      <h5>開催地域</h5>
+      <div class="search-form">
+        <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name, { include_blank: true } %>
+      </div>
+      <h5>お祭り名</h5>
+      <div class="search-form">
+        <%= f.text_field :keyword %>
+      </div>
+        <%= f.submit "絞り込み検索" %>
+      <% end %>
+    </div>
+    <div class = "col-xl-6 offset-xl-1 mt-5">
+      <h4 style = "background-color: #d3d3d3; width: 50%;">検索結果</h4>
+      <table class = "table mt-4">
+        <thead>
+          <tr>
+            <th></th>
+            <th>お祭り名</th>
+            <th>開催地域</th>
+            <th>開催月</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><%= image_tag post.image, style: "width: 120px; height: 120px;"%></td>
+            <td>
+              <%= link_to post_path(post.id) do %>
+                <%= post.matsuri_name %>
+              <% end %>
+            </td>
+            <td><%= JpPrefecture::Prefecture.find(post.area).name %></td>
+            <td><%=post.season %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </div>
+    </div>
+  </div>
+</div>

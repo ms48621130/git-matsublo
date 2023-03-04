@@ -2,22 +2,21 @@ Rails.application.routes.draw do
 
 
   root to:"public/homes#top"
-  
+
   devise_for :admin,skip: [:passwords, :registrations], controllers: {
   sessions: 'admin/sessions'
 }
   devise_for :users,skip: [:passwords], controllers: {
   registrations: 'public/registrations',
   sessions: 'public/sessions'
-  
-  
-  
+
+
+
 }
 
   scope module: :public do
     get 'about' => 'homes#about', as: 'about'
-    get "users_my_page" => "users#show"
-    resources :users,only: [:edit, :update]
+    resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#create'
     resources :posts,only: [:show]
     resources :reviews,only: [:index, :new, :create]

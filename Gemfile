@@ -64,3 +64,5 @@ gem 'pry-byebug', group: :development
 gem 'pry-rails'
 
 gem 'enum_help'
+
+gem 'jp_prefecture'

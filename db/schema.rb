@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_01_121110) do
+ActiveRecord::Schema.define(version: 2023_02_25_080838) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,14 +84,8 @@ ActiveRecord::Schema.define(version: 2023_03_01_121110) do
 
   create_table "posts", force: :cascade do |t|
     t.string "matsuri_name", null: false
-    t.string "season", null: false
+    t.integer "season", default: 1, null: false
     t.text "article", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "prefectures", force: :cascade do |t|
-    t.integer "post_id", null: false
     t.integer "area", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

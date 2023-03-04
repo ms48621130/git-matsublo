@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <th>開催地域</th>
-          <td><%=@prefectures.areas %></td>
+          <td><%= JpPrefecture::Prefecture.find(@post.area).name %></td>
         </tr>
         <tr>
           <th>開催月</th>

@@ -29,16 +29,13 @@
           <div style = "width: 20%;">
             <label>開催地域</label>
           </div>
-          <%= f.fields_for :prefectures, @prefecture do |prefecture| %>
-            <%= prefecture.select :area, Prefecture.areas.keys, {} %>
-            
-          <% end %>
+          <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name %>
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 20%;">
             <label>開催月</label>
           </div>
-          <%#= f.date_select :season, {:descard_year => true, :discard_day => true} %>
+          <%= f.select :season, [*(1..12)] %>月
         </div>
         <div class="form-group d-flex align-items-center">
           <div style = "width: 20%;">

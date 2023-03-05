@@ -20,6 +20,14 @@
           <th>開催月</th>
           <td><%=@post.season %></td>
         </tr>
+        <tr>
+          <th>関連タグ</th>
+            <td>
+              <% @posts.each do |post| %>
+                <%= post.name %>
+              <% end %>
+            </td>
+        </tr>
       </table>
       <%= link_to edit_admin_post_path(@post.id), class: "btn btn-success mt-3" do %>
         編集する

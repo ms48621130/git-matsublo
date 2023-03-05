@@ -43,6 +43,12 @@
           </div>
           <%= f.text_area :article ,class: "form-control introduction", style: "width: 80%;" %>
         </div>
+        <div class="form-group d-flex align-items-center">
+          <div style = "width: 20%;">
+            <label>関連タグ</label>
+          </div>
+          <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+        </div>
         <div class="form-group text-center">
           <%= f.submit '投稿新規登録' ,class: "btn btn-success" %>
         </div>

@@ -36,12 +36,14 @@ class Post < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(tag_name: old)
+      self.tags.delete Tag.find_by(tag_name: old)
+      sleep 1
     end
 
     # 新しいタグを保存
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(tag_name: new)
+      sleep 2
       self.tags << new_post_tag
     end
   end

@@ -39,8 +39,9 @@ class Admin::PostsController < ApplicationController
   end
 
   private
+  
   def post_params
-    params.require(:post).permit(:image, :matsuri_name, :article, :season, :area, :name)
+    params.require(:post).permit(:image,:matsuri_name,:article, :season, :area)
   end
 
 end

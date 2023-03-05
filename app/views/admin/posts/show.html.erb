@@ -23,8 +23,8 @@
         <tr>
           <th>関連タグ</th>
             <td>
-              <% @posts.each do |post| %>
-                <%= post.name %>
+              <% @post.tags.each do |tag| %>
+                <%= tag.tag_name %>
               <% end %>
             </td>
         </tr>

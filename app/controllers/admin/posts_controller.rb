@@ -41,11 +41,17 @@ class Admin::PostsController < ApplicationController
   def update_tag
     @post = Post.find(params[:id])
     @tag_list = params[:post][:name].split(',')
-    byebug
     @post.save_tag(@tag_list)
   end
   
   def delete_tag
+#    @post = Post.find(params[:post_id])
+#    @tag_list = params[:post][:name].split(',')
+#    @post.destroy(@tag_list)
+
+    tag = PostTag.find_by(tag_id: params[:tag_id], post_id: params[:post_id])
+    tag.destroy
+    @post = Post.find(params[:post_id])
   end
   
   private

@@ -1,4 +1,5 @@
 <br>
 <% post.tags.each do |tag| %>
-  <%= tag.tag_name %><%= link_to '×', delete_tag_path(tag.id), method: :delete, remote: true, data: {"turbolinks" => false} %>
+  <%= tag.tag_name %>
+  <%= link_to '×', admin_delete_tag_path(post.id, tag.id), method: :delete, remote: true, data: {"turbolinks" => false} %>
 <% end %>

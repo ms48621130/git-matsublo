@@ -27,19 +27,15 @@ class Post < ApplicationRecord
   end
 
   def save_tag(sent_tags)
-  # タグが存在していれば、現在のタグの名前を配列として全て取得
+    # タグを存在していれば、現在のタグの名前を配列として全て取得
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
-    # 現在のタグから送られてきたタグを除いたものをoldtagとする
-    old_tags = current_tags - sent_tags
-    # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
-    new_tags = sent_tags - current_tags
-
-    # 古いタグを消す
-    old_tags.each do |old|
-      self.tags.delete Tag.find_by(tag_name: old)
+    # 送られたタグと現在のタグを合わせたものから重複を排除したものを新しいタグとする
+    new_tags = (sent_tags + current_tags).uniq
+    # 現在のタグを消す
+    current_tags.each do |tag|
+      self.tags.delete Tag.find_by(tag_name: tag)
       sleep 1
     end
-
     # 新しいタグを保存
     new_tags.each do |new|
       new_post_tag = Tag.find_or_create_by(tag_name: new)

@@ -23,7 +23,9 @@
         <tr>
           <th>関連タグ</th>
             <td>
-              <%= @tag.tag_name %>
+              <% @tags.each do |tag| %>
+                <%= tag.tag_name %>
+              <% end %>
             </td>
         </tr>
       </table>

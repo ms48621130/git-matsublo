@@ -21,10 +21,11 @@
         <% end %>
       </div>
       <div class = "col-xl-3 offset-xl-1 mt-4">
-        <%= form_with model @post, url: tag_search_path, method: :get, local: true do |f| %>
+        <%= form_with url: tag_search_path, method: :get, local: true do |f| %>
         <h5 class = "mt-4">タグリスト</h5>
         <div class="search-form">
-          <% @post.tags.each do |tag| %>
+          <% @tags.each do |tag| %>
+          <%# byebug %>
             <%= f.check_box :tag_name, { multiple: true, include_hidden: false }, tag.tag_name %>
             <%= f.label tag.tag_name %>
           <% end %>

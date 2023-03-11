@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 }
 
   scope module: :public do
-    get "search" => "homes#search"
+    get "post_search" => "homes#post_search"
+    get "tag_search" => "homes#tag_search"
     get 'about' => 'homes#about', as: 'about'
     resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#create'

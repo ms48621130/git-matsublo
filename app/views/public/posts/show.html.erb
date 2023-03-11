@@ -1,2 +1,29 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class = "col-xl-3 offset-xl-1 mt-4">
+      <h4 style = "background-color: #d3d3d3; width: 50%;">投稿詳細</h4>
+      <div class = "mt-4">
+        <%= image_tag @post.image, style: "width: 120px; height: 120px;"%>
+      </div>
+    </div>
+    <div class = "col-xl-5 offset-xl-1 mt-5">
+      <table class = "table">
+        <tr>
+          <th>お祭り名</th>
+          <td><%=@post.matsuri_name %></td>
+        </tr>
+        <tr>
+          <th>開催地域</th>
+          <td><%= JpPrefecture::Prefecture.find(@post.area).name %></td>
+        </tr>
+        <tr>
+          <th>開催月</th>
+          <td><%=@post.season %></td>
+        </tr>
+        <tr>
+          <th>関連タグ</th>
+            <td>
+              <%= @tag.tag_name %>
+            </td>
+        </tr>
+      </table>

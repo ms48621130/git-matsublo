@@ -14,6 +14,16 @@ import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
+/* global $*/
+$(function() {
+    $('button').click(function(){
+        $("#rect").slideToggle();
+    });
+});
+

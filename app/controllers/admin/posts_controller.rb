@@ -20,7 +20,7 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @posts = Post.all
+    # @posts = Post.all
   end
 
   def edit
@@ -43,7 +43,7 @@ class Admin::PostsController < ApplicationController
     @tag_list = params[:post][:name].split(',')
     @post.save_tag(@tag_list)
   end
-  
+
   def delete_tag
 #    @post = Post.find(params[:post_id])
 #    @tag_list = params[:post][:name].split(',')
@@ -53,9 +53,9 @@ class Admin::PostsController < ApplicationController
     tag.destroy
     @post = Post.find(params[:post_id])
   end
-  
+
   private
-  
+
   def post_params
     params.require(:post).permit(:image,:matsuri_name,:article, :season, :area)
   end

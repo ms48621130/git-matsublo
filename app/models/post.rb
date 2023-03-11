@@ -27,7 +27,7 @@ class Post < ApplicationRecord
   end
 
   def save_tag(sent_tags)
-    # タグを存在していれば、現在のタグの名前を配列として全て取得
+    # タグが存在していれば、現在のタグの名前を配列として全て取得
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     # 送られたタグと現在のタグを合わせたものから重複を排除したものを新しいタグとする
     new_tags = (sent_tags + current_tags).uniq

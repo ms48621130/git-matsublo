@@ -7,6 +7,9 @@
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <script src="/jquery.raty.js"></script>
   </head>
 
   <body class = "d-flex flex-column vh-100">
@@ -21,7 +24,6 @@
           <% else %>
             <span>LOGO</span>
           <% end %>
-          byebug
           <% if admin_signed_in? %>
           <li>
             <%= link_to admin_users_path, class: 'nav-link text-light' do %>
@@ -75,5 +77,14 @@
       </nav>
     </header>
     <%= yield %>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        navigation: {
+          nextEl: '.button-next',
+          prevEl: '.button-prev',
+        },
+      });
+    </script>
   </body>
 </html>

@@ -1,43 +1,47 @@
 
 <div class="container">
   <div class="row">
-    <!--<body>-->
-    <!--<div id = "rect">-->
-      <div class = "col-xl-3 offset-xl-1 mt-4">
-        <%= form_with model: @post, url: post_search_path, method: :get, local: true do |f| %>
-        <h5 class = "mt-4">開催月</h5>
-        <div class="search-form">
-          <%= f.select :season, [*(1..12)], { include_blank: true } %>月
+    <div class = "col-4 mt-4">
+      <%= button_tag "祭り検索", type: 'button', class: "button-prev btn btn-warning btn-lg" %>
+      <%= button_tag "記事検索", type: 'button', class: "button-next btn btn-success btn-lg" %>
+      <div class="swiper-container" style="overflow:hidden;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <%= form_with model: @post, url: post_search_path, method: :get, local: true do |f| %>
+              <div style = "margin: 12%;">
+              <h5 class = "mt-4">開催月</h5>
+              <div class="search-form">
+                <%= f.select :season, [*(1..12)], { include_blank: true } %>月
+              </div>
+              <h5 class = "mt-4">開催地域</h5>
+              <div class="search-form">
+                <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name, { include_blank: true } %>
+              </div>
+              <h5 class = "mt-4">お祭り名</h5>
+              <div class="search-form">
+                <%= f.text_field :matsuri_name %>
+              </div>
+              <%= f.submit "絞り込み検索" ,class: "btn btn-warning mt-4" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-slide">
+            <%= form_with url: tag_search_path, method: :get, local: true, class: "aside_form" do |f| %>
+              <h5 class = "mt-4">タグリスト</h5>
+              <div class="search-form">
+                <% @tags.each do |tag| %>
+                <%# byebug %>
+                  <%= f.check_box :tag_name, { multiple: true, include_hidden: false }, tag.tag_name %>
+                  <%= f.label tag.tag_name %>
+                <% end %>
+              </div>
+              <%= f.submit "絞り込み検索" ,class: "btn btn-success mt-4" %>
+            <% end %>
+          </div>
         </div>
-        <h5 class = "mt-4">開催地域</h5>
-        <div class="search-form">
-          <%= f.collection_select :area, JpPrefecture::Prefecture.all, :code, :name, { include_blank: true } %>
-        </div>
-        <h5 class = "mt-4">お祭り名</h5>
-        <div class="search-form">
-          <%= f.text_field :keyword %>
-        </div>
-          <%= f.submit "絞り込み検索" ,class: "btn btn-success mt-4" %>
-        <% end %>
       </div>
-      <div class = "col-xl-3 offset-xl-1 mt-4">
-        <%= form_with url: tag_search_path, method: :get, local: true do |f| %>
-        <h5 class = "mt-4">タグリスト</h5>
-        <div class="search-form">
-          <% @tags.each do |tag| %>
-          <%# byebug %>
-            <%= f.check_box :tag_name, { multiple: true, include_hidden: false }, tag.tag_name %>
-            <%= f.label tag.tag_name %>
-          <% end %>
-        </div>
-          <%= f.submit "絞り込み検索" ,class: "btn btn-success mt-4" %>
-        <% end %>
-      </div>
-
-    <!--</div>-->
-    <!-- <button>click</button>-->
-    <!--</body>-->
-    <div class = "col-xl-6 offset-xl-1 mt-5">
+    </div>
+    <div class = "col-md-8 mt-5">
       <h4 style = "background-color: #d3d3d3; width: 50%;">検索結果</h4>
       <table class = "table mt-4">
         <thead>
@@ -62,7 +66,7 @@
           </tr>
         <% end %>
         </tbody>
-      </div>
+      </table>
     </div>
   </div>
 </div>

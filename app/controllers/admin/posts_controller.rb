@@ -42,7 +42,6 @@ class Admin::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tag_list = params[:post][:name].split(',')
     @post.save_tag(@tag_list)
-    byebug
   end
 
   def delete_tag
@@ -50,8 +49,8 @@ class Admin::PostsController < ApplicationController
 #    @tag_list = params[:post][:name].split(',')
 #    @post.destroy(@tag_list)
 
-    tag = PostTag.find_by(tag_id: params[:tag_id], post_id: params[:post_id])
-    tag.destroy
+    post_tag = PostTag.find_by(tag_id: params[:tag_id], post_id: params[:post_id])
+    post_tag.destroy
     @post = Post.find(params[:post_id])
   end
 

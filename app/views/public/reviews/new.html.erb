@@ -1,2 +1,19 @@
-<h1>Public::Reviews#new</h1>
-<p>Find me in app/views/public/reviews/new.html.erb</p>
+<div id="star">
+  <label>評価</label>
+</div>
+<script type="module">
+import Raty from "/jquery.raty.js"
+window.raty = function(elem,opt){
+    var raty =  new Raty(elem,opt)
+    raty.init();
+    return raty;
+}
+$(document).ready(function() {
+ var elem = document.getElementById('star');
+var opt = {
+    score: 3
+  };
+  raty(elem,opt);
+})
+
+</script>

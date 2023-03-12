@@ -14,17 +14,6 @@ class Post < ApplicationRecord
     validates :image
   end
 
-  def self.keyword_search(keyword)
-    where(["matsuri_name like?", "%#{keyword}%"])
-  end
-
-  def self.season_search(season)
-    where(["season like?", "#{season}"])
-  end
-
-  def self.area_search(area)
-    where(["area like?", "#{area}"])
-  end
 
   def save_tag(sent_tags)
     # タグが存在していれば、現在のタグの名前を配列として全て取得

@@ -12,7 +12,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
-
+import 'swiper/css/swiper';
 
 
 Rails.start()
@@ -21,9 +21,9 @@ ActiveStorage.start()
 
 
 /* global $*/
-$(function() {
-    $('button').click(function(){
-        $("#rect").slideToggle();
-    });
-});
+// $(function() {
+//     $('button').click(function(){
+//         $("#rect").slideToggle();
+//     });
+// });
 

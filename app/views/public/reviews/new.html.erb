@@ -1,19 +1,22 @@
-<div id="star">
-  <label>評価</label>
+<%= form_with model: @review, local: true do |f| %>
+<!--~略~-->
+<div class="field" id="star">
+  <%= f.label :star, "星評価：" %>
+  <%= f.hidden_field :star, id: :review_star %>
 </div>
-<script type="module">
-import Raty from "/jquery.raty.js"
-window.raty = function(elem,opt){
-    var raty =  new Raty(elem,opt)
-    raty.init();
-    return raty;
-}
-$(document).ready(function() {
- var elem = document.getElementById('star');
-var opt = {
-    score: 3
-  };
-  raty(elem,opt);
-})
+<%= f.submit 'レビュー投稿' ,class: "btn btn-success" %>
+<% end %>
 
+<script>
+  $('#star').empty();
+  let elem = document.querySelector("#star");
+  let opt = {
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[star]',   // evaluationカラムへの保存
+    half: true,   // 星半分の入力
+  }
+  raty(elem,opt)
 </script>

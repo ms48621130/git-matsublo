@@ -1,12 +1,29 @@
-<%= form_with model: @review, local: true do |f| %>
-<!--~略~-->
-<div class="field" id="star">
-  <%= f.label :star, "星評価：" %>
-  <%= f.hidden_field :star, id: :review_star %>
+<div class="container">
+  <div class="row">
+    <div class = "col-xl-4 mt-4">
+      <h4 style = "background-color: #d3d3d3;">レビュー投稿</h4>
+      <%= form_with model: @review, local: true do |f| %>
+      <div class="form-group d-flex align-items-center">
+        <div style = "width: 20%;">
+          <label>タイトル</label>
+        </div>
+        <%= f.text_field :title ,class: "form-control name", style: "width: 80%;" %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        <div style = "width: 20%;">
+          <label>本文</label>
+        </div>
+        <%= f.text_area :text ,class: "form-control introduction", style: "width: 80%;" %>
+      </div>
+      <div class="field" id="star">
+        <%= f.label :star, "星評価：" %>
+        <%= f.hidden_field :star, id: :review_star %>
+      </div>
+      <%= f.submit 'レビュー投稿' ,class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
 </div>
-<%= f.submit 'レビュー投稿' ,class: "btn btn-success" %>
-<% end %>
-
 <script>
   $('#star').empty();
   let elem = document.querySelector("#star");

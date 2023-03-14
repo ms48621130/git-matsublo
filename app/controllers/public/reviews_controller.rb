@@ -7,10 +7,10 @@ class Public::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review.params)
-    @post = Post.find(params[:id])
-    if @review.save
-      redirect_to post_path(@post.id)
+    @review = Review.new(review_params)
+    @review.user_id = current_user.id
+    if @review.save!
+      redirect_to post_path(@review.post.id)
     else
       render :new
     end
@@ -19,6 +19,6 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:star, :title, :text)
+    params.require(:review).permit(:star, :title, :text, :post_id)
   end
 end

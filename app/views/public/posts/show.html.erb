@@ -29,6 +29,39 @@
             </td>
         </tr>
       </table>
-      <%= link_to new_review_path, class: "btn btn-success mt-3" do %>
         レビュー投稿
+      <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+      <div class="form-group d-flex align-items-center">
+        <div style = "width: 20%;">
+          <label>タイトル</label>
+        </div>
+        <%= f.text_field :title ,class: "form-control name", style: "width: 80%;" %>
+      </div>
+      <div class="form-group d-flex align-items-center">
+        <div style = "width: 20%;">
+          <label>本文</label>
+        </div>
+        <%= f.text_area :text ,class: "form-control introduction", style: "width: 80%;" %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+      </div>
+      <div class = "row">
+      <div class = "col-md-3">星評価</div>
+      <div class="col-md-9" id="star">
+        <%= f.hidden_field :star, id: :review_star %>
+      </div>
+      </div>
+      <%= f.submit 'レビュー投稿' ,class: "btn btn-success" %>
+      <script>
+        $('#star').empty();
+        let elem = document.querySelector("#star");
+        let opt = {
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'review[star]',
+          half: true,
+        }
+        raty(elem,opt)
+      </script>
       <% end %>

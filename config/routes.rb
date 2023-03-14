@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#create'
     resources :posts,only: [:show]
-    resources :reviews,only: [:index, :new, :create]
+    resources :reviews,only: [:index, :create]
     resources :comments,only: [:new, :create]
   end
 

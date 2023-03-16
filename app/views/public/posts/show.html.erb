@@ -10,7 +10,9 @@
       <table class = "table">
         <tr>
           <th>お祭り名</th>
-          <td><%=@post.matsuri_name %></td>
+          <td>
+            <%=@post.matsuri_name %>
+          </td>
         </tr>
         <tr>
           <th>開催地域</th>
@@ -18,15 +20,23 @@
         </tr>
         <tr>
           <th>開催月</th>
-          <td><%=@post.season %></td>
+          <td><%=@post.season %>月</td>
         </tr>
         <tr>
           <th>関連タグ</th>
-            <td>
-              <% @tags.each do |tag| %>
-                <%= tag.tag_name %>
-              <% end %>
-            </td>
+          <td>
+            <% @tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>レビュー件数</th>
+          <td>
+            <%= link_to reviews_path do %>
+              <%= @post.reviews.count %>件
+            <% end %>
+          </td>
         </tr>
       </table>
       <div class = "mt-5">レビュー投稿</div>
@@ -61,6 +71,7 @@
           starHalf: '<%= asset_path('star-half.png') %>',
           scoreName: 'review[star]',
           half: true,
+          
         }
         raty(elem,opt)
       </script>

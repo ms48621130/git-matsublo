@@ -1,5 +1,7 @@
 class Public::ReviewsController < ApplicationController
   def index
+    @reviews = Review.all
+    # @post.id = @reviews.post_id
   end
 
   def new

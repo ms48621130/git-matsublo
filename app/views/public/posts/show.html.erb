@@ -38,6 +38,10 @@
             <% end %>
           </td>
         </tr>
+        <tr>
+          <th>総合評価</th>
+          <td><%= @post.reviews.average(:star).to_f.round(1) %></td>
+        </tr>
       </table>
       <div class = "mt-5">レビュー投稿</div>
       <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
@@ -61,6 +65,7 @@
         </div>
       </div>
       <%= f.submit 'レビュー投稿' ,class: "btn btn-success mt-4" %>
+      <% end %>
       <script>
         $('#star').empty();
         let elem = document.querySelector("#star");
@@ -71,8 +76,7 @@
           starHalf: '<%= asset_path('star-half.png') %>',
           scoreName: 'review[star]',
           half: true,
-          
+          score: <%= @post.reviews.average(:star).to_f.round(1) %>,
         }
         raty(elem,opt)
       </script>
-      <% end %>

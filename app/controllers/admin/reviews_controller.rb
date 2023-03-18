@@ -7,6 +7,10 @@ class Admin::ReviewsController < ApplicationController
   def show
   end
 
-  def edit
+  def destroy
+    @user = User.find(params[:user_id])
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to admin_user_reviews_path(@user.id)
   end
 end

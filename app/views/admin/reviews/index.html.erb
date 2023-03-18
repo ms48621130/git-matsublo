@@ -8,7 +8,6 @@
             <th>タイトル</th>
             <th>投稿日時</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -18,11 +17,9 @@
             <td><%= review.title %></td>
             <td><%= review.created_at %></td>
             <td>
-              <%= link_to edit_admin_user_review_path(@user.id, review.id) do %>
-                <%= submit_tag '編集する' ,class: "btn btn-primary ml-5" %>
+              <%= link_to admin_user_review_path(@user.id, review.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                <%= submit_tag '削除する' ,class: "btn btn-danger ml-5" %>
               <% end %>
-            </td>
-            <td>
             </td>
           </tr>
           <% end %>

@@ -17,8 +17,9 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about', as: 'about'
     resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#create'
-    resources :posts,only: [:show]
-    resources :reviews,only: [:index, :create]
+    resources :posts,only: [:show] do
+      resources :reviews,only: [:index, :create]
+    end
     resources :comments,only: [:new, :create]
   end
 

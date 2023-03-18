@@ -33,18 +33,21 @@
         <tr>
           <th>レビュー件数</th>
           <td>
-            <%= link_to reviews_path do %>
+            <%= link_to post_reviews_path(@post.id) do %>
               <%= @post.reviews.count %>件
             <% end %>
           </td>
         </tr>
         <tr>
           <th>総合評価</th>
-          <td><%= @post.reviews.average(:star).to_f.round(1) %></td>
+          <td>
+            <div id="average-star"></div>
+            <%= @post.reviews.average(:star).to_f.round(0) %>
+          </td>
         </tr>
       </table>
       <div class = "mt-5">レビュー投稿</div>
-      <%= form_with model: @review, url: reviews_path, method: :post do |f| %>
+      <%= form_with model: @review, url: post_reviews_path(@post.id), method: :post do |f| %>
       <div class="form-group d-flex align-items-center mt-4">
         <div style = "width: 20%;">
           <label>タイトル</label>
@@ -68,15 +71,27 @@
       <% end %>
       <script>
         $('#star').empty();
-        let elem = document.querySelector("#star");
-        let opt = {
+        var elem = document.querySelector("#star");
+        var opt = {
           size     : 36,
           starOff:  '<%= asset_path('star-off.png') %>',
           starOn : '<%= asset_path('star-on.png') %>',
           starHalf: '<%= asset_path('star-half.png') %>',
           scoreName: 'review[star]',
           half: true,
-          score: <%= @post.reviews.average(:star).to_f.round(1) %>,
         }
         raty(elem,opt)
+
+        $('#average-star').empty();
+          var averageStarElem = document.querySelector("#average-star");
+          var averageStarOpt = {
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @post.reviews.average(:star).to_f.round(0) %>
+          }
+          raty(averageStarElem, averageStarOpt)
       </script>

@@ -12,12 +12,12 @@
       <div class="col-md-6 mb-3">
         <p><%= review.created_at %></p>
         <h5 class = "mt-4">評価:<%= review.star %>点 | <%= review.title %></h5>
-        <div id="star-<%= review.id%>"></div>
+        <div id="star-<%= review.id %>"></div>
         <h5><%= review.text %></h5>
         <script>
-          $('#star-<%= review.id%>').empty();
-          let elem = document.querySelector("#star-<%= review.id%>");
-          let opt = {
+          $('#star-<%= review.id %>').empty();
+          var elem = document.querySelector("#star-<%= review.id %>");
+          var opt = {
             size     : 36,
             starOff:  '<%= asset_path('star-off.png') %>',
             starOn : '<%= asset_path('star-on.png') %>',
@@ -27,12 +27,13 @@
             readOnly: true,
             score: <%= review.star %>,
           }
+
           raty(elem,opt)
         </script>
       </div>
     </div>
   <% end %>
-  <%= link_to post_path(@post.id), class: "btn btn-success mt-3" do %>
+  <%= link_to post_path(params[:post_id]), class: "btn btn-success mt-3" do %>
     投稿詳細に戻る
   <% end %>
 </div>

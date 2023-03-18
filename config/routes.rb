@@ -29,11 +29,10 @@ Rails.application.routes.draw do
     patch 'posts/:id/update_tag' => 'posts#update_tag', as: 'update_tag'
     delete 'posts/:post_id/delete_tag/:tag_id' => 'posts#delete_tag', as: 'delete_tag'
     resources :posts,only: [:new, :index, :show, :edit, :create, :update, :destroy]
-    resources :users,only: [:index, :show, :edit, :update]
-    resources :reviews,only: [:index, :show, :edit, :update, :destroy]
+    resources :users,only: [:index, :show, :edit, :update] do
+      resources :reviews,only: [:index, :show, :edit, :update, :destroy]
+    end
   end
-
-
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

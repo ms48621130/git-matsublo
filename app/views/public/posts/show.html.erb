@@ -42,7 +42,7 @@
           <th>総合評価</th>
           <td>
             <div id="average-star"></div>
-            <%= @post.reviews.average(:star).to_f.round(0) %>
+            <%= @post.reviews.average(:star).round(0).to_f %>点
           </td>
         </tr>
       </table>

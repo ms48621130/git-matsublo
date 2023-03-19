@@ -10,3 +10,8 @@ Admin.create!(
   email: 'shimizu@masaki',
   password: 'ms4862'
 )
+
+
+user = User.new(email: "guest@example.com", name: "ゲストユーザー", password: SecureRandom.urlsafe_base64)
+user.image.attach(io: File.open(Rails.root.join("app/assets/images/no_image.jpg")), filename: 'no_image.jpg')
+user.save!

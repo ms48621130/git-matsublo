@@ -4,7 +4,4 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @tags = @post.tags
   end
-
-
-
 end

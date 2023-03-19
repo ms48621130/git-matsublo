@@ -15,12 +15,14 @@
       <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
         <div class = "container">
           <% if user_signed_in? %>
-          <div class = "navbar-brand text-center">
-            <span>LOGO</span>
-            ようこそ、<%= current_user.name %>さん！
-          </div>
+            <a class = "navbar-brand text-center" href="/">
+              <span>LOGO</span>
+            </a>
+            <h5 class="navbar-brand text-center">ようこそ、<%= current_user.name %>さん！</h5>
           <% else %>
-            <span>LOGO</span>
+            <a class = "navbar-brand text-center" href="/">
+              <span>LOGO</span>
+            </a>
           <% end %>
           <% if admin_signed_in? %>
           <li>

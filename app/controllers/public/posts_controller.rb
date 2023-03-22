@@ -3,5 +3,6 @@ class Public::PostsController < ApplicationController
     @review = Review.new
     @post = Post.find(params[:id])
     @tags = @post.tags
+    @post_reviews = @post.reviews
   end
 end

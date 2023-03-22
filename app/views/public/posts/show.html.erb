@@ -34,15 +34,19 @@
           <th>レビュー件数</th>
           <td>
             <%= link_to post_reviews_path(@post.id) do %>
-              <%= @post.reviews.count %>件
+              <%= @post_reviews.count %>件
             <% end %>
           </td>
         </tr>
         <tr>
           <th>総合評価</th>
           <td>
-            <div id="average-star"></div>
-            <%= @post.reviews.average(:star).round(0).to_f %>点
+            <% if @post_reviews.exists? %>
+              <%= @post_reviews.average(:star).round(0).to_f %>点
+              <div id="average-star"></div>
+            <% else %>
+              評価がありません
+            <% end %>
           </td>
         </tr>
       </table>
@@ -82,8 +86,9 @@
         }
         raty(elem,opt)
 
-        $('#average-star').empty();
-          var averageStarElem = document.querySelector("#average-star");
+        var averageStarElem = document.querySelector("#average-star");
+        if (averageStarElem) {
+          $('#average-star').empty();
           var averageStarOpt = {
             size     : 36,
             starOff:  '<%= asset_path('star-off.png') %>',
@@ -91,7 +96,8 @@
             starHalf: '<%= asset_path('star-half.png') %>',
             half: true,
             readOnly: true,
-            score: <%= @post.reviews.average(:star).to_f.round(0) %>
+            score: <%= @post_reviews.average(:star).to_f.round(0) %>
           }
           raty(averageStarElem, averageStarOpt)
+        }
       </script>

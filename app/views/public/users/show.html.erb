@@ -13,9 +13,13 @@
         <tr>
           <th>登録情報</th>
           <td>
+          <% if @user.email == "guest@example.com" %>
+            ゲストユーザーは編集できません
+          <% else %>
             <%=link_to edit_user_path(@user.id), class: "btn btn-success ml-5" do %>
               編集する
             <% end %>
+          <% end %>
           </td>
         </tr>
         <tr>

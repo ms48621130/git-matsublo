@@ -16,21 +16,20 @@ class Public::HomesController < ApplicationController
 
     if (params[:matsuri_name]!= "" )
       @posts = Post.where(matsuri_name: params[:matsuri_name])
-      # where(["matsuri_name like?", "%#{keyword}%"]) → matsuri_nameに対して部分一致をしたい
 
     end
     @tags = Tag.all
-    # @keyword = params[:keyword]
     render "top"
   end
 
   def tag_search
     @tags = Tag.all
-    if(params[:tag_name]!= "")
-      @tags = Tag.where(tag_name: params[:tag_name])
+    if(params[:tag_name].present?)
+      @posts = Post.includes(:tags).where(tags:{tag_name: params[:tag_name]})
 #      @tags = Tag.tag_name_search(params[:tag_name])
+    else
+      @posts = Post.all
     end
-    @posts = Post.all
     #@posts = Post.all
     # posttag= PostTag.where(tag_id:@tags)
     # @posts = Post.where(id:posttag)

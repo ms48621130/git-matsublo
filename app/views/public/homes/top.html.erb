@@ -30,7 +30,6 @@
               <h5 class = "mt-4">タグリスト</h5>
               <div class="search-form">
                 <% @tags.each do |tag| %>
-                <%# byebug %>
                   <%= f.check_box :tag_name, { multiple: true, include_hidden: false }, tag.tag_name %>
                   <%= f.label tag.tag_name %>
                 <% end %>
@@ -57,9 +56,17 @@
           <tr>
             <td><%= image_tag post.image, style: "width: 120px; height: 120px;"%></td>
             <td>
+            <% if user_signed_in? %>
               <%= link_to post_path(post.id) do %>
                 <%= post.matsuri_name %>
               <% end %>
+            <% elsif admin_signed_in? %>
+              <%= link_to post_path(post.id) do %>
+                <%= post.matsuri_name %>
+              <% end %>
+            <% else %>
+              <%= post.matsuri_name %>
+            <% end %>
             </td>
             <td><%= JpPrefecture::Prefecture.find(post.area).name %></td>
             <td><%=post.season %></td>

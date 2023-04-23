@@ -30,8 +30,8 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @tag_list = params[:post][:name].split(',')
     if @post.update(post_params)
-      @tag_list = params[:post][:name].split(',')
       @post.save_tag(@tag_list)
       redirect_to admin_post_path(@post.id)
     else

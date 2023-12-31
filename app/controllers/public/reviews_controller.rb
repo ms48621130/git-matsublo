@@ -12,7 +12,7 @@ class Public::ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id])
     @tags = @post.tags
     @post_reviews = @post.reviews
     if @review.save

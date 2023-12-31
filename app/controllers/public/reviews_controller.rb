@@ -19,7 +19,7 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       redirect_to post_reviews_path(:post_id)
     else
-      render :post_path
+      render :post_path[:post_id]
     end
   end
 

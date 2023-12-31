@@ -78,20 +78,17 @@
       <%= f.submit 'レビュー投稿' ,class: "btn btn-success mt-4" %>
       <% end %>
       <script>
-        $('#star-<%= review.id %>').empty();
-          var elem = document.querySelector("#star-<%= review.id %>");
-          var opt = {
-            size     : 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            // scoreName: 'review[star]',
-            half: true,
-            readOnly: true,
-            score: <%= review.star %>,
-          }
-
-          raty(elem,opt)
+        $('#star').empty();
+        var elem = document.querySelector("#star");
+        var opt = {
+          size     : 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'review[star]',
+          half: true,
+        }
+        raty(elem,opt)
 
         var averageStarElem = document.querySelector("#average-star");
         if (averageStarElem) {

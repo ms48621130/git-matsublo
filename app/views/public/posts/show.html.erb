@@ -46,7 +46,7 @@
           <th>総合評価</th>
           <td>
             <% if @post_reviews.exists? %>
-              <%= @post_reviews.average(:star).round(0).to_f %>点
+              <%= @post_reviews.average(:star).round(1).to_f %>点
               <div id="average-star"></div>
             <% else %>
               評価がありません

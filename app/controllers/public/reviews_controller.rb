@@ -1,6 +1,8 @@
 class Public::ReviewsController < ApplicationController
   def index
-    @reviews = Review.all
+    @reviews = @post.reviews
+    @post = Post.find(params[:id])
+    @post.reviews
     # @post.id = @reviews.post_id
   end
 

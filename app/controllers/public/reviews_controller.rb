@@ -17,7 +17,7 @@ class Public::ReviewsController < ApplicationController
     @post_reviews = @post.reviews
     @reviews = @post.reviews
     if @review.save
-      redirect_to post_reviews_path
+      redirect_to post_reviews_path(:post_id)
     else
       render :show
     end

@@ -100,7 +100,7 @@
             starHalf: '<%= asset_path('star-half.png') %>',
             half: true,
             readOnly: true,
-            score: <%= @post_reviews.average(:star).to_f.round(0) %>
+            score: <%= @post_reviews.average(:star).to_f.round(1) %>
           }
           raty(averageStarElem, averageStarOpt)
         }

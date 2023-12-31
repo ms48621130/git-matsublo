@@ -22,6 +22,11 @@
           <td><%=@post.season %></td>
         </tr>
         <tr>
+         <tr>
+          <th>記事</th>
+          <td><%=@post.article %></td>
+        </tr>
+        <tr>
           <th>関連タグ</th>
             <td>
               <%= f.text_field :name,value: @tag_list,class:"form-control"%>

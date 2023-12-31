@@ -15,6 +15,7 @@ class Public::ReviewsController < ApplicationController
     @post = Post.find(params[:post_id])
     @tags = @post.tags
     @post_reviews = @post.reviews
+    @reviews = @post.reviews
     if @review.save
       redirect_to post_path(@review.post.id)
     else

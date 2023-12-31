@@ -15,7 +15,7 @@ class Public::ReviewsController < ApplicationController
     if @review.save
       redirect_to post_path(@review.post.id)
     else
-      render :new
+      render :index
     end
   end
 

@@ -51,11 +51,6 @@
             <span>ログアウト</span>
             <% end %>
           </li>
-          <li>
-            <%= link_to about_path, class: 'nav-link text-light' do %>
-            <span>サイト紹介</span>
-            <% end %>
-          </li>
           <% else %>
           <li>
             <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
@@ -65,11 +60,6 @@
           <li>
             <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
             <span>新規登録</span>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to about_path, class: 'nav-link text-light' do %>
-            <span>サイト紹介</span>
             <% end %>
           </li>
           <% end %>

@@ -10,7 +10,7 @@
         <%= image_tag review.user.image, style: "width: 100px; height: 100px;"%>
       </div>
       <div class="col-md-6 mb-3">
-        <p><%= review.created_at %></p>
+        <p>投稿日: <%= review.created_at %></p>
         <h5 class = "mt-4">評価:<%= review.star %>点 | <%= review.title %></h5>
         <div id="star-<%= review.id %>"></div>
         <h5><%= review.text %></h5>

@@ -15,7 +15,7 @@
           <tr>
             <td><%= review.post.matsuri_name %></td>
             <td><%= review.title %></td>
-            <td><%= review.created_at %></td>
+            <td><%= l review.created_at %></td>
             <td>
               <%= link_to admin_user_review_path(@user.id, review.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
                 <%= submit_tag '削除する' ,class: "btn btn-danger ml-5" %>

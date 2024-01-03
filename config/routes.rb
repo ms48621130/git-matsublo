@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get "post_search" => "homes#post_search"
     get "tag_search" => "homes#tag_search"
     get 'about' => 'homes#about', as: 'about'
+    get 'users/:user_id/reviews' => 'reviews#show', as: 'user_reviews'
+    get 'users/:user_id/reviews/:id/edit' => 'reviews#edit', as: 'edit_user_review'
     resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#guest_login'
     resources :posts,only: [:show] do

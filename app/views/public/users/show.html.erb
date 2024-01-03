@@ -16,8 +16,11 @@
           <% if @user.email == "guest@example.com" %>
             ゲストユーザーは編集できません
           <% else %>
-            <%=link_to edit_user_path(@user.id), class: "btn btn-success ml-5" do %>
+            <%=link_to edit_user_path(@user.id),class: "btn btn-success ml-5" do %>
               編集する
+            <% end %>
+            <%= link_to admin_user_reviews_path(@user.id),class: "btn btn-primary ml-5" do %>
+              レビュー履歴一覧を見る
             <% end %>
           <% end %>
           </td>

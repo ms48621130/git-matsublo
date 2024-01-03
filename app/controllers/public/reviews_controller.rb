@@ -28,6 +28,13 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to user_review_path(@user.id, @review.id)
+  end
+
   private
 
   def review_params

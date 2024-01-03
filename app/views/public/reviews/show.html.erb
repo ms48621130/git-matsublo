@@ -22,7 +22,7 @@
               <%=link_to edit_user_review_path(@user.id, review.id),class: "btn btn-success ml-3" do %>
                 編集する
               <% end %>
-              <%= link_to admin_user_review_path(@user.id, review.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+              <%= link_to user_review_path(@user.id, review.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
                 <%= submit_tag '削除する' ,class: "btn btn-danger ml-3" %>
               <% end %>
             </td>

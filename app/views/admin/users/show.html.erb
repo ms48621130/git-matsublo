@@ -26,7 +26,7 @@
         <%= link_to edit_admin_user_path(@user.id) do %>
           <%= submit_tag '編集する' ,class: "btn btn-success mr-5" %>
         <% end %>
-        <%= link_to admin_user_reviews_path(@user.id) do %>
+        <%= link_to user_reviews_path(@user.id) do %>
           <%= submit_tag 'レビュー履歴一覧を見る' ,class: "btn btn-primary ml-5" %>
         <% end %>
       </div>

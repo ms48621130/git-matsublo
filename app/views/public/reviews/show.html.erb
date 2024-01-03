@@ -1,6 +1,6 @@
 <div class="row">
   <div class = "col-xl-10 offset-xl-1 mt-4">
-    <H4 style = "background-color: #d3d3d3; width: 15%">レビュー履歴一覧</H4>
+    <H4 style = "background-color: #d3d3d3; width: 12%">レビュー履歴一覧</H4>
       <table class = "table mt-4">
         <thead>
           <tr>
@@ -19,11 +19,11 @@
             <td><%= l review.created_at %></td>
             <td><%= l review.updated_at %></td>
             <td>
-              <%=link_to edit_user_review_path(@user.id, review.id),class: "btn btn-success ml-5" do %>
+              <%=link_to edit_user_review_path(@user.id, review.id),class: "btn btn-success ml-3" do %>
                 編集する
               <% end %>
               <%= link_to admin_user_review_path(@user.id, review.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
-                <%= submit_tag '削除する' ,class: "btn btn-danger ml-5" %>
+                <%= submit_tag '削除する' ,class: "btn btn-danger ml-3" %>
               <% end %>
             </td>
           </tr>

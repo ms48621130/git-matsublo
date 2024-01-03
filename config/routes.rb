@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     get "post_search" => "homes#post_search"
     get "tag_search" => "homes#tag_search"
     get 'about' => 'homes#about', as: 'about'
-    get 'users/:user_id/reviews' => 'reviews#show', as: 'user_reviews'
-    get 'users/:user_id/reviews/:id/edit' => 'reviews#edit', as: 'edit_user_review'
-    resources :users,only: [:show, :edit, :update]
     post 'guest/login' => 'guest_sessions#guest_login'
+    resources :users,only: [:show, :edit, :update] do
+      resources :reviews,only: [:show, :edit, :destroy]
+    end
     resources :posts,only: [:show] do
       resources :reviews,only: [:index, :create]
     end
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     delete 'posts/:post_id/delete_tag/:tag_id' => 'posts#delete_tag', as: 'delete_tag'
     resources :posts,only: [:new, :index, :show, :edit, :create, :update, :destroy]
     resources :users,only: [:index, :show, :edit, :update] do
-      resources :reviews,only: [:index, :show, :edit, :update, :destroy]
+      resources :reviews,only: [:show, :edit, :update, :destroy]
     end
   end
 

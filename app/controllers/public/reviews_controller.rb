@@ -5,6 +5,11 @@ class Public::ReviewsController < ApplicationController
     # @post.id = @reviews.post_id
   end
 
+  def show
+    @user = User.find(params[:user_id])
+    @reviews = @user.reviews
+  end
+
   def new
     @review = Review.new
   end

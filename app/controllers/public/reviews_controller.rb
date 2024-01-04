@@ -37,10 +37,9 @@ class Public::ReviewsController < ApplicationController
     @user = User.find(params[:user_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      sign_in(@user)
       redirect_to user_review_path(@user.id,@review.id)
     else
-      render :show
+      render :edit
     end
   end
 

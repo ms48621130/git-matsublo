@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     delete 'posts/:post_id/delete_tag/:tag_id' => 'posts#delete_tag', as: 'delete_tag'
     resources :posts,only: [:new, :index, :show, :edit, :create, :update, :destroy]
     resources :users,only: [:index, :show, :edit, :update] do
-      resources :reviews,only: [:show, :edit, :update, :destroy]
+      resources :reviews,only: [:edit, :update]
     end
   end
 

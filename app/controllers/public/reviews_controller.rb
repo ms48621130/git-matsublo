@@ -33,13 +33,22 @@ class Public::ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  
+  def update
+    @user = User.find(params[:user_id])
+    @review = Review.find(params[:id])
+    if @user.update(user_params)
+      sign_in(@user)
+      redirect_to user_review_path(@user.id,@review.id)
+    else
+      render :show
+    end
+  end
 
   def destroy
     @user = User.find(params[:user_id])
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to user_review_path(@user.id, @review.id)
+    redirect_to user_review_path(@user.id,@review.id)
   end
 
   private

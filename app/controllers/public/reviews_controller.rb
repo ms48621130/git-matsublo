@@ -28,6 +28,13 @@ class Public::ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:user_id])
+    @review = Review.find(params[:id])
+  end
+
+  
+
   def destroy
     @user = User.find(params[:user_id])
     @review = Review.find(params[:id])
@@ -38,6 +45,6 @@ class Public::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:star, :title, :text, :post_id)
+    params.require(:review).permit(:star, :title, :text, :user_id, :post_id)
   end
 end

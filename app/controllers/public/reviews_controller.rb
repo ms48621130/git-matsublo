@@ -36,7 +36,7 @@ class Public::ReviewsController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @review = Review.find(params[:id])
-    if @user.update(user_params)
+    if @review.update(review_params)
       sign_in(@user)
       redirect_to user_review_path(@user.id,@review.id)
     else

@@ -3,11 +3,13 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M"
   activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            name: ユーザー名
-            email: メールアドレス
-            encripted_password: パスワード
-            image: ユーザーアイコン
+    attributes:
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        encripted_password: パスワード
+        image: ユーザーアイコン
+  errors:
+    messages:
+      blank: を入力してください
+      too_short: は6文字以上で入力してください

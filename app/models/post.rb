@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   with_options presence: true do
     validates :matsuri_name
     validates :season
+    validates :area
     validates :article
     validates :image
   end

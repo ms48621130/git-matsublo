@@ -8,6 +8,7 @@ ja:
         name: ユーザー名
         email: メールアドレス
         encripted_password: パスワード
+        password: パスワード
         image: ユーザーアイコン
   errors:
     messages:

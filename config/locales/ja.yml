@@ -7,7 +7,6 @@ ja:
       user:
         name: ユーザー名
         email: メールアドレス
-        encrypted_password: パスワード
         password: パスワード
         image: ユーザーアイコン
   errors:

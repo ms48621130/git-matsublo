@@ -2,3 +2,9 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  attributes:
+    user:
+      name: ユーザー名
+      email: メールアドレス
+      passward: パスワード
+      image: ユーザーアイコン

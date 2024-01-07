@@ -11,7 +11,3 @@ ja:
             email: メールアドレス
             encripted_password: パスワード
             image: ユーザーアイコン
-              blank: を入力してください
-              too_short: は6文字以上で入力してください
-
-

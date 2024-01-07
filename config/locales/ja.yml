@@ -9,6 +9,10 @@ ja:
         email: メールアドレス
         password: パスワード
         image: ユーザーアイコン
+      post:
+        matsuri_name: お祭り名
+        image: お祭り画像
+        article: 記事
   errors:
     messages:
       blank: を入力してください

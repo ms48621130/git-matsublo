@@ -2,9 +2,16 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
-  attributes:
-    user:
-      name: ユーザー名
-      email: メールアドレス
-      passward: パスワード
-      image: ユーザーアイコン
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name: ユーザー名
+            email: メールアドレス
+            encripted_password: パスワード
+            image: ユーザーアイコン
+              blank: を入力してください
+              too_short: は6文字以上で入力してください
+
+

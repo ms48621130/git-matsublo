@@ -6,14 +6,15 @@
   </div>
   <div class="row">
     <div class = "col-xl-6 offset-xl-3">
-      <% if @review.errors.any? %>
-      <%= @review.errors.count %>errors prohibited this obj from being saved:
-        <ul>
-          <% @review.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      <% end %>
+      <div style = "color :#FF0000; ">
+        <% if @user.errors.any? %>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
       <%= form_with model: @review, url: user_review_path(@user.id,@review.id), local: true, method: :patch do |f| %>
       <div class="form-group d-flex align-items-center">
         <div style = "width: 20%;">

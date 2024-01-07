@@ -6,9 +6,8 @@
           <h4 style = "background-color: #d3d3d3;">新規会員登録</h4>
         </div>
       </div>
-      <div class="flash-message">
+      <div style = "color :#FF0000; ">
         <% if @user.errors.any? %>
-        <%= @user.errors.count %>件のエラーが発生しました
         <ul>
           <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>

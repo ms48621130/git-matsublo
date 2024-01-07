@@ -3,9 +3,9 @@
     <div class = "col-xl-2 offset-xl-3 mt-4">
       <h4 style = "background-color: #d3d3d3;">投稿新規登録</h4>
       <div style = "color :#FF0000; ">
-        <% if @user.errors.any? %>
+        <% if @post.errors.any? %>
           <ul>
-            <% @user.errors.full_messages.each do |message| %>
+            <% @post.errors.full_messages.each do |message| %>
             <li><%= message %></li>
             <% end %>
           </ul>

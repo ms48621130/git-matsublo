@@ -7,7 +7,6 @@
       </div>
     </div>
     <div class = "col-xl-5 offset-xl-1 mt-5">
-      <%= form_with model: @post, url:admin_update_tag_path, method: :patch, local: false do |f| %>
       <table class = "table">
         <tr>
           <th>お祭り名</th>
@@ -28,15 +27,16 @@
         <tr>
           <th>関連タグ</th>
             <td>
-              <%= f.text_field :name,value: @tag_list,class:"form-control"%>
-              <%= f.submit 'タグ追加' ,class: "btn btn-success" %>
-              <div class = "tag-area">
-                <%= render 'admin/posts/form_update_tag', post: @post %>
-              </div>
+              <%= form_with model: @post, url: admin_update_tag_path(@post.id), method: :patch, local: false do |f| %>
+                <%= f.text_field :name,value: @tag_list,class:"form-control"%>
+                <%= f.submit 'タグ追加' ,class: "btn btn-success" %>
+                <div class = "tag-area">
+                  <%= render 'admin/posts/form_update_tag', post: @post %>
+                </div>
+              <% end %>
             </td>
         </tr>
       </table>
-      <% end %>
       <%= link_to edit_admin_post_path(@post.id), class: "btn btn-success mt-3" do %>
         編集する
       <% end %>

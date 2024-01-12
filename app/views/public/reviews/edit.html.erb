@@ -15,7 +15,7 @@
           </ul>
         <% end %>
       </div>
-      <%= form_with model: @review, url: user_review_path(@user.id,@review.id), local: true, method: :patch do |f| %>
+      <%= form_with model: @review, url: user_review_path(@user.id,@review.id), method: :patch do |f| %>
       <div class="form-group d-flex align-items-center">
         <div style = "width: 20%;">
           <label>タイトル</label>
@@ -37,15 +37,14 @@
         </div>
       </div>
       <div class = "text-center">
-        <%= link_to user_review_path(@user.id,@review.id), class: "btn btn-success mt-3" do %>
-          変更を保存
-        <% end %>
+        <%= f.submit '変更を保存' ,class: "btn btn-success mt-4" %>
+
       </div>
       <% end %>
     </div>
   </div>
   <script>
-        $('#star').empty();
+        //$('#star').empty();
         var elem = document.querySelector("#star");
         var opt = {
           size     : 36,

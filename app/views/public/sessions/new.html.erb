@@ -9,9 +9,9 @@
       <h5 style = "background-color :#d3d3d3; ">会員の方はこちらからログイン</h5>
     </div>
     <div style = "color :#FF0000; ">
-      <% if @user.errors.any? %>
+      <% if flash.any? %>
       <ul>
-        <% @user.errors.full_messages.each do |message| %>
+        <% flash.each do |flash_type,message| %>
         <li><%= message %></li>
         <% end %>
       </ul>

@@ -7,15 +7,15 @@ class Public::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
    super
-   
+   @user = User.find(params[:id])
   end
 
   # POST /resource/sign_in
-   def create
+   #def create
      #flash[:notice] = "投稿に成功しました。"
-     super
-     render :new
-   end
+     #super
+     #render :new
+   #end
 
   # DELETE /resource/sign_out
   # def destroy

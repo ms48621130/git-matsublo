@@ -4,6 +4,10 @@ ja:
       default: "%Y/%m/%d %H:%M"
   activerecord:
     attributes:
+      review:
+        title: タイトル
+        text: 本文
+        star: 星評価
       post:
         matsuri_name: お祭り名
         image: お祭り画像

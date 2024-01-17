@@ -7,7 +7,7 @@
       <div class="swiper-container" style="overflow:hidden;">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <%= form_with model: @post, url: post_search_path, method: :get, local: true do |f| %>
+            <%= form_with url: post_search_path, method: :get, local: true do |f| %>
               <div style = "margin: 12%;">
               <h5 class = "mt-4">開催月</h5>
               <div class="search-form">

@@ -49,6 +49,7 @@ group :development do
   gem 'rubocop-rails', require: false 
   gem 'rubocop-rspec' 
   gem 'brakeman', require: false
+  gem 'bullet'
 end
 
 group :test do

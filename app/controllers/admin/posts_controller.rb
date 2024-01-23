@@ -21,6 +21,7 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @post_tag = PostTag.find(params[:id])
     # @posts = Post.all
   end
 
@@ -37,23 +38,6 @@ class Admin::PostsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def update_tag
-    @post = Post.find(params[:id])
-    @tag_list = params[:post][:tag_name].split(',')
-    @post.save_tag(@tag_list)
-    redirect_to admin_post_path(@post.id)
-  end
-
-  def delete_tag
-#    @post = Post.find(params[:post_id])
-#    @tag_list = params[:post][:name].split(',')
-#    @post.destroy(@tag_list)
-
-    post_tag = PostTag.find_by(tag_id: params[:tag_id], post_id: params[:post_id])
-    post_tag.destroy
-    @post = Post.find(params[:post_id])
   end
 
   private

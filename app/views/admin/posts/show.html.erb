@@ -27,7 +27,7 @@
         <tr>
           <th>関連タグ</th>
             <td>
-              <%= form_with model: @post_tag, url: admin_post_post_tag_path(@post.id, @post_tag.id), method: :patch do |f| %>
+              <%= form_with model: @post_tags, url: admin_post_post_tags_path(@post.id), method: :post do |f| %>
                 <%= f.text_field :tag_name,value: @tag_list,class:"form-control"%>
                 <%= f.submit 'タグ追加' ,class: "btn btn-success" %>
                 <div class = "tag-area">

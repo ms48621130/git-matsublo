@@ -21,7 +21,7 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post_tag = PostTag.find(params[:id])
+    @post_tags = @post.post_tags
     # @posts = Post.all
   end
 

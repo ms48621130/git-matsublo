@@ -1,8 +1,8 @@
 class Admin::PostTagsController < ApplicationController
 
-  def update
-    @post = Post.find(params[:id])
-    @post_tag = PostTag.find(params[:id])
+  def create
+    @post = Post.find(params[:post_id])
+    @post_tags = @post.post_tags
     @tag_list = params[:post_tag][:tag_name].split(',')
     @post.save_tag(@tag_list)
     redirect_to admin_post_path(@post.id)

@@ -26,11 +26,8 @@ Rails.application.routes.draw do
   get 'admin' => 'admin/homes#top', as: 'admin'
 
   namespace :admin do
-    patch 'posts/:id/update_tag' => 'posts#update_tag', as: 'update_tag'
-    delete 'posts/:post_id/delete_tag/:tag_id' => 'posts#delete_tag', as: 'delete_tag'
     resources :posts,only: [:new, :index, :show, :edit, :create, :update, :destroy] do
       resources :post_tags,only: [:destroy, :create]
-      #resource :post_tags,only: [:create]
     end
     resources :users,only: [:index, :show, :edit, :update] do
       resources :reviews,only: [:edit, :update]

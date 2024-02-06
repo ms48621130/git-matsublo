@@ -18,7 +18,7 @@ class Public::HomesController < ApplicationController
       @posts = Post.where(matsuri_name: params[:matsuri_name])
 
     end
-    @tags = @tags = Tag.joins(:posts).where.not(posts: { id: nil })
+    @tags = Tag.joins(:posts).where.not(posts: { id: nil })
     render "top"
   end
 

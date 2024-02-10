@@ -4,17 +4,13 @@ require 'rails_helper'
 
 RSpec.describe User do
   let(:user) { create(:user) }
-  describe "user name" do
+  describe "モデルの各カラムが存在するか" do
     it "ユーザー名が存在すること" do
       expect(user.name).to be_present
     end
-  end
-  describe "user amail" do
     it "メールアドレスが存在すること" do
       expect(user.email).to be_present
     end
-  end
-  describe "user password" do
     it "パスワードが存在すること" do
       expect(user.password).to be_present
     end

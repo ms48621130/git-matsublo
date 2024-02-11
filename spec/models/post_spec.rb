@@ -18,11 +18,11 @@ RSpec.describe Post do
       expect(post.article).to be_present
     end
   end
-  #describe '実際に保存してみる' do
-    #it "有効な投稿内容の場合は保存されるか" do
-	    #expect(FactoryBot.build(:post)).to be_valid
-	  #end
-  #end
+  describe '実際に保存してみる' do
+    it "有効な投稿内容の場合は保存されるか" do
+	    expect(FactoryBot.build(:post)).to be_valid
+	  end
+  end
   context "空白のバリデーションチェック" do
     it "お祭り名が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       post = Post.new(matsuri_name: '')
@@ -44,10 +44,10 @@ RSpec.describe Post do
 	    expect(post).to be_invalid
       expect(post.errors[:area]).to include("を入力してください")
     end
-    #it "お祭り画像が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
-      #post = build(:post, image: nil)
-	    #expect(post.valid?).to eq(false)
-      #expect(post.errors[:image]).to include("を入力してください")
-    #end
+    it "お祭り画像が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+      post = build(:post, image: nil)
+	    expect(post.valid?).to eq(false)
+      expect(post.errors[:image]).to include("を入力してください")
+    end
   end
 end

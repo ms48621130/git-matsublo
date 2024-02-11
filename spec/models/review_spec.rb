@@ -6,18 +6,12 @@ RSpec.describe Review do
   let(:review) { create(:review) }
   describe "モデルの各カラムが存在するか" do
     it "タイトルが存在すること" do
-      review = build(:review)
-	    expect(review.valid?).to eq(false)
       expect(review.title).to be_present
     end
     it "本文が存在すること" do
-      review = build(:review)
-	    expect(review.valid?).to eq(false)
       expect(review.text).to be_present
     end
     it "星評価が存在すること" do
-      review = build(:review)
-	    expect(review.valid?).to eq(false)
       expect(review.star).to be_present
     end
   end

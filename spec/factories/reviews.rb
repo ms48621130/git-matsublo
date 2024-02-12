@@ -4,6 +4,6 @@ FactoryBot.define do
     association :post
     title { Faker::Name.name }
     text { Faker::Books::Dune.quote }
-    star { Faker::Name.name }
+    star { [*(1..5)].sample }
   end
 end

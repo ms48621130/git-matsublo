@@ -45,7 +45,7 @@ RSpec.describe Post do
       expect(post.errors[:area]).to include("を入力してください")
     end
     it "お祭り画像が空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか" do
-      post = build(:post, image: nil)
+      post = Post.new(image: nil)
 	    expect(post.valid?).to eq(false)
       expect(post.errors[:image]).to include("を入力してください")
     end

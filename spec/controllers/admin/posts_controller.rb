@@ -65,22 +65,21 @@ RSpec.describe Admin::PostsController, type: :controller do
     end
   end
   describe "updateアクション" do
-    let(:edit_post) { create(:post,matsuri_name: "example") }
+    let(:post) { create(:post,matsuri_name: "example") }
     it "正常に記事を編集できるか？" do
-      expect(edit_post.matsuri_name).to eq "example"
-        put :update, id: edit_post, params: {
-          post: {
-            #id: edit_post.id,
-            matsuri_name: "example2",
-            season: 2,
-            area: "example2",
-            article: "example2",
-            name: "example2",
-            image: fixture_file_upload(File.open('app/assets/images/no_image.jpg'),'image/jpg')
-          }
+      expect(post.matsuri_name).to eq "example"
+      put :update, params: {
+        post: {
+          id: post.id,
+          matsuri_name: "example2",
+          season: 2,
+          area: "example2",
+          article: "example2",
+          image: fixture_file_upload(File.open('app/assets/images/no_image.jpg'),'image/jpg')
         }
-        edit_post.reload
-        expect(edit_post.matsuri_name).to eq "example2"
+      }
+        post.reload
+        expect(post.matsuri_name).to eq "example2"
 
     end
   end
